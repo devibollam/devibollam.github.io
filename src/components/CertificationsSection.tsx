@@ -71,6 +71,10 @@ const CertificationsSection = () => {
                     {cert.title}
                   </h3>
                   <p className="text-sm text-primary/80 font-medium">{cert.issuer}</p>
+                  <div className="flex items-center gap-1 mt-1">
+                    <Star className="w-4 h-4 text-primary fill-primary" />
+                    <span className="text-xs text-muted-foreground ml-1">Fundamentals Level</span>
+                  </div>
                   <p className="text-sm text-foreground/60 leading-relaxed">
                     {cert.description}
                   </p>

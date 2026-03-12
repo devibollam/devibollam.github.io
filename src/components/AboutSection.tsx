@@ -50,7 +50,7 @@ const AboutSection = () => {
               {[
                 { icon: Briefcase, label: "Role", value: "AI/ML Engineer at Capgemini" },
                 { icon: Mail, label: "Email", value: "devibollam221@gmail.com" },
-                { icon: MapPin, label: "Location", value: "Bengaluru, India" },
+                { icon: MapPin, label: "Location", value: "Hyderabad, India" },
               ].map((item) => (
                 <div key={item.label} className="flex items-start gap-3 group">
                   <div className="p-2 bg-secondary rounded-md group-hover:bg-primary/10 transition-colors">

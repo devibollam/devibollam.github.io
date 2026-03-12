@@ -97,6 +97,7 @@ const ContactSection = () => {
               {[
                 { icon: Github, href: "https://github.com/devibollam" },
                 { icon: Linkedin, href: "https://linkedin.com/in/devibollam" },
+                { icon: () => <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13.54 12a6.8 6.8 0 01-6.77 7.04 6.8 6.8 0 01-6.77-7.04 6.8 6.8 0 016.77-7.04 6.8 6.8 0 016.77 7.04zm3.73 0a4.23 4.23 0 01-3.38 4.37 4.23 4.23 0 01-3.39-4.37A4.23 4.23 0 0113.89 7.63a4.23 4.23 0 013.38 4.37zm1.95-.62c0 1.97-.42 3.57-.94 3.57s-.94-1.6-.94-3.57.42-3.57.94-3.57.94 1.6.94 3.57z" /></svg>, href: "https://medium.com/@devibollam221" },
               ].map(({ icon: Icon, href }) => (
                 <a
                   key={href}

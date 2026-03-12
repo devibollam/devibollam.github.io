@@ -83,6 +83,7 @@ const HeroSection = () => {
                 <span className="text-xs font-heading tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
                   Microsoft Certified · AI-900
                 </span>
+                <Star className="w-3.5 h-3.5 text-primary fill-primary" />
               </a>
             </motion.div>
 
