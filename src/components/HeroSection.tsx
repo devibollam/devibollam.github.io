@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.jpg";
-import { ArrowDown, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Star } from "lucide-react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
 
