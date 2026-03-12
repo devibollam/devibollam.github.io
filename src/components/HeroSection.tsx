@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.jpg";
-import { ArrowDown, Github, Linkedin } from "lucide-react";
+import { ArrowDown, Github, Linkedin, Star } from "lucide-react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
 
@@ -83,6 +83,7 @@ const HeroSection = () => {
                 <span className="text-xs font-heading tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
                   Microsoft Certified · AI-900
                 </span>
+                <Star className="w-3.5 h-3.5 text-primary fill-primary" />
               </a>
             </motion.div>
 
@@ -107,22 +108,21 @@ const HeroSection = () => {
                 Get in Touch
               </a>
               <div className="flex gap-2 ml-2">
-                <a
-                  href="https://github.com/devibollam"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 border border-border/50 rounded-md hover:border-primary/30 hover:bg-primary/5 transition-colors"
-                >
-                  <Github className="w-4 h-4 text-muted-foreground" />
-                </a>
-                <a
-                  href="https://linkedin.com/in/devibollam"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2.5 border border-border/50 rounded-md hover:border-primary/30 hover:bg-primary/5 transition-colors"
-                >
-                  <Linkedin className="w-4 h-4 text-muted-foreground" />
-                </a>
+                {[
+                  { icon: Github, href: "https://github.com/devibollam" },
+                  { icon: Linkedin, href: "https://linkedin.com/in/devibollam" },
+                  { icon: () => <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-muted-foreground"><path d="M13.54 12a6.8 6.8 0 01-6.77 7.04 6.8 6.8 0 01-6.77-7.04 6.8 6.8 0 016.77-7.04 6.8 6.8 0 016.77 7.04zm3.73 0a4.23 4.23 0 01-3.38 4.37 4.23 4.23 0 01-3.39-4.37A4.23 4.23 0 0113.89 7.63a4.23 4.23 0 013.38 4.37zm1.95-.62c0 1.97-.42 3.57-.94 3.57s-.94-1.6-.94-3.57.42-3.57.94-3.57.94 1.6.94 3.57z" /></svg>, href: "https://medium.com/@devibollam221" },
+                ].map(({ icon: Icon, href }) => (
+                  <a
+                    key={href}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 border border-border/50 rounded-md hover:border-primary/30 hover:bg-primary/5 transition-colors"
+                  >
+                    <Icon className="w-4 h-4 text-muted-foreground" />
+                  </a>
+                ))}
               </div>
             </motion.div>
           </div>

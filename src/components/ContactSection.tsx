@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Mail, Github, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useRef(null);
@@ -89,14 +89,6 @@ const ContactSection = () => {
                   devibollam221@gmail.com
                 </span>
               </a>
-              <a href="tel:7093928326" className="flex items-center gap-3 group">
-                <div className="p-2 bg-secondary rounded-md group-hover:bg-primary/10 transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-sm text-foreground/80 group-hover:text-primary transition-colors">
-                  +91 7093928326
-                </span>
-              </a>
             </div>
 
             <div className="section-divider" />
@@ -105,6 +97,7 @@ const ContactSection = () => {
               {[
                 { icon: Github, href: "https://github.com/devibollam" },
                 { icon: Linkedin, href: "https://linkedin.com/in/devibollam" },
+                { icon: () => <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4"><path d="M13.54 12a6.8 6.8 0 01-6.77 7.04 6.8 6.8 0 01-6.77-7.04 6.8 6.8 0 016.77-7.04 6.8 6.8 0 016.77 7.04zm3.73 0a4.23 4.23 0 01-3.38 4.37 4.23 4.23 0 01-3.39-4.37A4.23 4.23 0 0113.89 7.63a4.23 4.23 0 013.38 4.37zm1.95-.62c0 1.97-.42 3.57-.94 3.57s-.94-1.6-.94-3.57.42-3.57.94-3.57.94 1.6.94 3.57z" /></svg>, href: "https://medium.com/@devibollam221" },
               ].map(({ icon: Icon, href }) => (
                 <a
                   key={href}
