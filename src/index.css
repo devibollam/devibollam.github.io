@@ -76,7 +76,7 @@
   }
 
   .glow-accent {
-    box-shadow: 0 0 40px -10px hsl(43 90% 70% / 0.15);
+    box-shadow: 0 0 40px -10px hsl(175 70% 50% / 0.15);
   }
 }
 
