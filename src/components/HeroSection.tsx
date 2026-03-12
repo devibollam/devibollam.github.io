@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.jpg";
+import { ArrowDown, Github, Linkedin } from "lucide-react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
 
@@ -61,26 +62,68 @@ const HeroSection = () => {
               deep learning, and large language models.
             </motion.p>
 
+            {/* Microsoft Badge inline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="flex items-center gap-3"
+            >
+              <a
+                href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 px-4 py-2 bg-secondary/80 border border-border/50 rounded-full hover:border-primary/30 transition-colors group"
+              >
+                <img
+                  src="https://images.credly.com/size/340x340/images/4136ced8-75d5-4afb-8677-571f3d4e4c3a/image.png"
+                  alt="Microsoft AI-900 Badge"
+                  className="w-8 h-8 object-contain"
+                />
+                <span className="text-xs font-heading tracking-wider text-muted-foreground group-hover:text-primary transition-colors">
+                  Microsoft Certified · AI-900
+                </span>
+              </a>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-wrap gap-4 pt-2"
+              className="flex flex-wrap items-center gap-4 pt-2"
             >
               <a
                 href="https://devibollam.github.io/Devi_AIML_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-primary text-primary-foreground font-heading text-sm tracking-wide hover:opacity-90 transition-opacity"
+                className="px-6 py-3 bg-primary text-primary-foreground font-heading text-sm tracking-wide hover:opacity-90 transition-opacity rounded-md"
               >
                 Download CV
               </a>
               <a
                 href="#contact"
-                className="px-6 py-3 border border-border text-foreground font-heading text-sm tracking-wide hover:border-primary hover:text-primary transition-colors"
+                className="px-6 py-3 border border-border text-foreground font-heading text-sm tracking-wide hover:border-primary hover:text-primary transition-colors rounded-md"
               >
                 Get in Touch
               </a>
+              <div className="flex gap-2 ml-2">
+                <a
+                  href="https://github.com/devibollam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 border border-border/50 rounded-md hover:border-primary/30 hover:bg-primary/5 transition-colors"
+                >
+                  <Github className="w-4 h-4 text-muted-foreground" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/devibollam"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2.5 border border-border/50 rounded-md hover:border-primary/30 hover:bg-primary/5 transition-colors"
+                >
+                  <Linkedin className="w-4 h-4 text-muted-foreground" />
+                </a>
+              </div>
             </motion.div>
           </div>
 
@@ -113,13 +156,14 @@ const HeroSection = () => {
         transition={{ delay: 1.4 }}
         className="flex justify-center pb-4"
       >
-        <motion.div
+        <motion.a
+          href="#about"
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className="w-5 h-8 border border-muted-foreground/30 rounded-full flex justify-center pt-1.5"
+          className="w-10 h-10 border border-muted-foreground/30 rounded-full flex items-center justify-center hover:border-primary/50 transition-colors"
         >
-          <div className="w-1 h-2 bg-primary/60 rounded-full" />
-        </motion.div>
+          <ArrowDown className="w-4 h-4 text-primary/60" />
+        </motion.a>
       </motion.div>
     </section>
   );

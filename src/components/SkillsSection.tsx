@@ -1,11 +1,28 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Brain, Code2, Wrench, Library } from "lucide-react";
 
 const skills = [
-  { category: "AI / ML", items: ["Machine Learning", "Deep Learning", "NLP", "Computer Vision", "Generative AI", "Agentic AI"] },
-  { category: "Frameworks", items: ["TensorFlow", "PyTorch", "LangChain", "Streamlit", "Hugging Face"] },
-  { category: "Languages", items: ["Python", "HTML", "CSS", "JavaScript", "SQL"] },
-  { category: "Tools", items: ["Git", "Docker", "YOLO", "PyAutoGUI", "Jupyter"] },
+  {
+    category: "AI / ML Domains",
+    icon: Brain,
+    items: ["Machine Learning", "Deep Learning", "Natural Language Processing (NLP)", "Computer Vision", "Generative AI", "Agentic AI"],
+  },
+  {
+    category: "Frameworks & Libraries",
+    icon: Library,
+    items: ["TensorFlow", "PyTorch", "LangChain", "Streamlit", "Hugging Face Transformers", "YOLO", "PyAutoGUI"],
+  },
+  {
+    category: "Programming Languages",
+    icon: Code2,
+    items: ["Python", "C", "C++", "HTML", "CSS", "SQL"],
+  },
+  {
+    category: "Tools",
+    icon: Wrench,
+    items: ["Git", "Docker", "Jupyter Notebook"],
+  },
 ];
 
 const SkillsSection = () => {
@@ -32,16 +49,21 @@ const SkillsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.15 * i }}
-              className="space-y-4"
+              className="p-6 bg-secondary/50 rounded-lg border border-border/50 hover:border-primary/20 transition-all duration-300 group"
             >
-              <h3 className="font-heading text-sm tracking-[0.2em] uppercase text-primary">
-                {group.category}
-              </h3>
-              <div className="section-divider" />
-              <ul className="space-y-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-primary/10 rounded-md group-hover:bg-primary/20 transition-colors">
+                  <group.icon className="w-4 h-4 text-primary" />
+                </div>
+                <h3 className="font-heading text-sm tracking-[0.15em] uppercase text-primary font-medium">
+                  {group.category}
+                </h3>
+              </div>
+              <div className="section-divider mb-4" />
+              <ul className="space-y-2.5">
                 {group.items.map((skill) => (
-                  <li key={skill} className="text-foreground/80 text-sm flex items-center gap-2">
-                    <span className="w-1 h-1 bg-primary rounded-full" />
+                  <li key={skill} className="text-foreground/80 text-sm flex items-center gap-2.5">
+                    <span className="w-1.5 h-1.5 bg-primary/60 rounded-full shrink-0" />
                     {skill}
                   </li>
                 ))}
