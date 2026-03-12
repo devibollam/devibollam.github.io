@@ -92,7 +92,7 @@
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(43 90% 70% / 0.5);
+  background: hsl(175 70% 50% / 0.5);
 }
 
 /* Selection */
