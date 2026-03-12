@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award } from "lucide-react";
+import { Award, ExternalLink } from "lucide-react";
 
 const certifications = [
   {
@@ -37,7 +37,7 @@ const CertificationsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {certifications.map((cert, i) => (
             <motion.a
               key={cert.code}
@@ -47,32 +47,35 @@ const CertificationsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-              className="group p-6 bg-secondary/50 rounded-lg border border-border/50 hover:border-primary/30 hover:bg-primary/5 transition-all duration-300"
+              className="group relative p-8 bg-secondary/50 rounded-lg border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 glow-accent"
             >
-              <div className="flex items-start gap-5">
-                <div className="shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-secondary flex items-center justify-center border border-border/50 group-hover:border-primary/20 transition-colors">
+              <div className="flex items-start gap-6">
+                <div className="shrink-0 w-24 h-24 rounded-xl overflow-hidden bg-secondary/80 flex items-center justify-center border border-border/50 group-hover:border-primary/30 transition-colors p-2">
                   <img
                     src={cert.badgeUrl}
                     alt={cert.title}
-                    className="w-16 h-16 object-contain"
+                    className="w-20 h-20 object-contain"
                   />
                 </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <Award className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-heading tracking-wider uppercase text-primary">
-                      {cert.code}
-                    </span>
+                <div className="space-y-3 flex-1">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <Award className="w-5 h-5 text-primary" />
+                      <span className="text-sm font-heading tracking-wider uppercase text-primary font-medium">
+                        {cert.code}
+                      </span>
+                    </div>
+                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <h3 className="font-heading text-sm font-semibold leading-snug">
+                  <h3 className="font-heading text-base font-semibold leading-snug">
                     {cert.title}
                   </h3>
-                  <p className="text-xs text-muted-foreground">{cert.issuer}</p>
+                  <p className="text-sm text-primary/80 font-medium">{cert.issuer}</p>
+                  <p className="text-sm text-foreground/60 leading-relaxed">
+                    {cert.description}
+                  </p>
                 </div>
               </div>
-              <p className="mt-4 text-xs text-foreground/60 leading-relaxed">
-                {cert.description}
-              </p>
             </motion.a>
           ))}
         </div>
