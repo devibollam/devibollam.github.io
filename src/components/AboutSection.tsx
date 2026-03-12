@@ -17,7 +17,7 @@ const AboutSection = () => {
           className="mb-12"
         >
           <p className="font-heading text-sm tracking-[0.3em] uppercase text-primary mb-3">About</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold">Who I Am</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold">About Me</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

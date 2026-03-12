@@ -97,6 +97,6 @@
 
 /* Selection */
 ::selection {
-  background: hsl(43 90% 70% / 0.3);
+  background: hsl(175 70% 50% / 0.3);
   color: hsl(0 0% 92%);
 }
