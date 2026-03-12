@@ -1,6 +1,6 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, Star } from "lucide-react";
 
 const certifications = [
   {
