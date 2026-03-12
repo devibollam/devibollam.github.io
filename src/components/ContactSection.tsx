@@ -89,14 +89,6 @@ const ContactSection = () => {
                   devibollam221@gmail.com
                 </span>
               </a>
-              <a href="tel:7093928326" className="flex items-center gap-3 group">
-                <div className="p-2 bg-secondary rounded-md group-hover:bg-primary/10 transition-colors">
-                  <Phone className="w-4 h-4 text-primary" />
-                </div>
-                <span className="text-sm text-foreground/80 group-hover:text-primary transition-colors">
-                  +91 7093928326
-                </span>
-              </a>
             </div>
 
             <div className="section-divider" />
