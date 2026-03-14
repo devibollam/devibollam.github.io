@@ -76,7 +76,7 @@ const HeroSection = () => {
                 className="flex items-center gap-3 px-4 py-2 bg-secondary/80 border border-border/50 rounded-full hover:border-primary/30 transition-colors group"
               >
                 <img
-                  src="https://images.credly.com/size/340x340/images/4136ced8-75d5-4afb-8677-571f3d4e4c3a/image.png"
+                  src="/microsoft-azure-ai-900.png"
                   alt="Microsoft AI-900 Badge"
                   className="w-8 h-8 object-contain"
                 />

@@ -9,8 +9,7 @@ const certifications = [
     issuer: "Microsoft",
     description:
       "Demonstrated foundational knowledge of machine learning and AI concepts, along with related Microsoft Azure services.",
-    badgeUrl:
-      "https://images.credly.com/size/340x340/images/4136ced8-75d5-4afb-8677-571f3d4e4c3a/image.png",
+    badgeUrl: "/microsoft-azure-ai-900.png",
     verifyUrl:
       "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/",
   },
@@ -37,24 +36,21 @@ const CertificationsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
           {certifications.map((cert, i) => (
-            <motion.a
+            <motion.div
               key={cert.code}
-              href={cert.verifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
               className="group relative p-8 bg-secondary/50 rounded-lg border border-border/50 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 glow-accent"
             >
-              <div className="flex items-start gap-6">
-                <div className="shrink-0 w-24 h-24 rounded-xl overflow-hidden bg-secondary/80 flex items-center justify-center border border-border/50 group-hover:border-primary/30 transition-colors p-2">
+              <div className="flex items-center gap-6">
+                <div className="shrink-0 w-28 h-28 md:w-32 md:h-32 rounded-xl overflow-hidden bg-secondary/80 flex items-center justify-center border border-border/50 group-hover:border-primary/30 transition-colors p-3">
                   <img
                     src={cert.badgeUrl}
                     alt={cert.title}
-                    className="w-20 h-20 object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <div className="space-y-3 flex-1">
@@ -80,7 +76,7 @@ const CertificationsSection = () => {
                   </p>
                 </div>
               </div>
-            </motion.a>
+            </motion.div>
           ))}
         </div>
       </div>
