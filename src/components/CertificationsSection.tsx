@@ -11,7 +11,7 @@ const certifications = [
       "Demonstrated foundational knowledge of machine learning and AI concepts, along with related Microsoft Azure services.",
     badgeUrl: "/microsoft-azure-ai-900.png",
     verifyUrl:
-      "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/",
+      "https://learn.microsoft.com/en-us/users/devibollam-6975/credentials/2c6865f2c24a61db?ref=https%3A%2F%2Fwww.linkedin.com%2F",
   },
 ];
 
@@ -61,7 +61,15 @@ const CertificationsSection = () => {
                         {cert.code}
                       </span>
                     </div>
-                    <ExternalLink className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <a
+                      href={cert.verifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Verify ${cert.title}`}
+                      className="opacity-0 group-hover:opacity-100 transition-opacity"
+                    >
+                      <ExternalLink className="w-4 h-4 text-muted-foreground" />
+                    </a>
                   </div>
                   <h3 className="font-heading text-base font-semibold leading-snug">
                     {cert.title}
