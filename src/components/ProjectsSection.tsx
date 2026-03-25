@@ -14,10 +14,10 @@ const projects = [
     image: foodImg,
   },
   {
-    title: "Q&A Chatbot",
+    title: "RAG Knowledge Assistant",
     description:
-      "Built a smart chatbot capable of answering user queries in real time using LangChain for NLP and Streamlit for an intuitive web interface.",
-    tech: ["LangChain", "Streamlit", "Python"],
+      "Built a Retrieval-Augmented Generation (RAG) assistant that answers questions using your documents. The system chunks and embeds content into a vector index, retrieves relevant passages, and generates grounded responses with clear citations.",
+    tech: ["RAG", "LangChain", "Vector DB", "Embeddings", "Streamlit"],
     image: chatbotImg,
   },
   {

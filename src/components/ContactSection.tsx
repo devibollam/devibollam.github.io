@@ -1,14 +1,17 @@
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { ChangeEvent, useRef, useState } from "react";
 import { Mail, Github, Linkedin } from "lucide-react";
 
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [submitState, setSubmitState] = useState<"idle" | "opening">("idle");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -33,7 +36,22 @@ const ContactSection = () => {
             className="lg:col-span-7 space-y-5"
             onSubmit={(e) => {
               e.preventDefault();
-              window.location.href = `mailto:devibollam221@gmail.com?subject=Hello from ${formData.name}&body=${formData.message}`;
+              setSubmitState("opening");
+
+              const recipient = "devibollam221@gmail.com";
+              const subject = `Hello from ${formData.name || "a portfolio visitor"}`;
+              const body = `Name: ${formData.name}
+Email: ${formData.email}
+
+Message:
+${formData.message}`;
+
+              // Use encoding to avoid broken `mailto:` URLs when user types spaces/newlines/&.
+              const mailto = `mailto:${recipient}?subject=${encodeURIComponent(
+                subject,
+              )}&body=${encodeURIComponent(body)}`;
+
+              window.location.href = mailto;
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -67,9 +85,10 @@ const ContactSection = () => {
             />
             <button
               type="submit"
-              className="px-8 py-3 bg-primary text-primary-foreground font-heading text-sm tracking-wide hover:opacity-90 transition-opacity"
+              disabled={submitState === "opening"}
+              className="px-8 py-3 bg-primary text-primary-foreground font-heading text-sm tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              Send Message
+              {submitState === "opening" ? "Opening..." : "Send Message"}
             </button>
           </motion.form>
 
