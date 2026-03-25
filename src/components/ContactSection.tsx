@@ -5,8 +5,15 @@ import { Mail, Github, Linkedin } from "lucide-react";
 const ContactSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [submitState, setSubmitState] = useState<"idle" | "opening">("idle");
+  const [formData, setFormData] = useState({
+    Name: "",
+    _replyto: "",
+    message: "",
+  });
+  const [submitState, setSubmitState] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -34,41 +41,52 @@ const ContactSection = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="lg:col-span-7 space-y-5"
-            onSubmit={(e) => {
+            onSubmit={async (e) => {
               e.preventDefault();
-              setSubmitState("opening");
+              setSubmitError(null);
+              setSubmitState("submitting");
 
-              const recipient = "devibollam221@gmail.com";
-              const subject = `Hello from ${formData.name || "a portfolio visitor"}`;
-              const body = `Name: ${formData.name}
-Email: ${formData.email}
+              const formEl = e.currentTarget;
+              const endpoint = "https://formspree.io/f/mqegzoyj";
+              const formDataToSend = new FormData(formEl);
 
-Message:
-${formData.message}`;
+              try {
+                const res = await fetch(endpoint, {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                  },
+                  body: formDataToSend,
+                });
 
-              // Use encoding to avoid broken `mailto:` URLs when user types spaces/newlines/&.
-              const mailto = `mailto:${recipient}?subject=${encodeURIComponent(
-                subject,
-              )}&body=${encodeURIComponent(body)}`;
+                if (!res.ok) {
+                  const text = await res.text().catch(() => "");
+                  throw new Error(text || `Formspree request failed (${res.status})`);
+                }
 
-              window.location.href = mailto;
+                setSubmitState("success");
+                setFormData({ Name: "", _replyto: "", message: "" });
+              } catch (err) {
+                setSubmitState("error");
+                setSubmitError(err instanceof Error ? err.message : "Something went wrong");
+              }
             }}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <input
                 type="text"
-                name="name"
+                name="Name"
                 placeholder="Name"
-                value={formData.name}
+                value={formData.Name}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-secondary border border-border rounded-md text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
               />
               <input
                 type="email"
-                name="email"
+                name="_replyto"
                 placeholder="Email"
-                value={formData.email}
+                value={formData._replyto}
                 onChange={handleChange}
                 required
                 className="w-full px-4 py-3 bg-secondary border border-border rounded-md text-foreground text-sm placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors"
@@ -85,11 +103,25 @@ ${formData.message}`;
             />
             <button
               type="submit"
-              disabled={submitState === "opening"}
+              disabled={submitState === "submitting"}
               className="px-8 py-3 bg-primary text-primary-foreground font-heading text-sm tracking-wide hover:opacity-90 transition-opacity disabled:opacity-60 disabled:cursor-not-allowed"
             >
-              {submitState === "opening" ? "Opening..." : "Send Message"}
+              {submitState === "submitting"
+                ? "Sending..."
+                : submitState === "success"
+                  ? "Sent!"
+                  : "Send Message"}
             </button>
+
+            {submitState === "success" ? (
+              <p className="text-xs text-foreground/60 leading-relaxed">
+                Thanks! Your message has been sent.
+              </p>
+            ) : submitState === "error" ? (
+              <p className="text-xs text-destructive leading-relaxed">
+                {submitError || "Failed to send. Please try again."}
+              </p>
+            ) : null}
           </motion.form>
 
           {/* Info */}

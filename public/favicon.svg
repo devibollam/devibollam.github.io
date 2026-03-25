@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="g" x1="10" y1="8" x2="54" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#22c55e"/>
+      <stop offset="0.55" stop-color="#06b6d4"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- App icon background -->
+  <circle cx="32" cy="32" r="30" fill="url(#g)"/>
+
+  <!-- Subtle highlight -->
+  <path d="M14 22c7-12 29-14 37-1" fill="none" stroke="rgba(255,255,255,0.35)" stroke-width="6" stroke-linecap="round"/>
+
+  <!-- Monogram -->
+  <text x="32" y="39" text-anchor="middle" font-family="system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="22" font-weight="800" fill="#ffffff" letter-spacing="1">LB</text>
+</svg>
+
