@@ -2,14 +2,11 @@ import { motion, useInView } from "framer-motion";
 import { ComponentType, useRef } from "react";
 import { Database, Layers, Sparkles, Workflow } from "lucide-react";
 
-import chatbotImg from "@/assets/chatbot.png";
-
 type Project = {
   title: string;
   description: string;
   tech: string[];
   highlights?: string[];
-  image?: string;
   icon: ComponentType<{ className?: string }>;
 };
 
@@ -23,7 +20,6 @@ const projects: Project[] = [
       "Grounded answers with reference passages",
     ],
     tech: ["RAG", "LangChain", "Embeddings", "Vector DB", "Streamlit"],
-    image: chatbotImg,
     icon: Database,
   },
   {
@@ -104,32 +100,24 @@ const ProjectCard = ({
       {/* Preview */}
       <div className={`lg:col-span-7 ${!isEven ? "lg:order-2" : ""}`}>
         <div className="relative overflow-hidden rounded-lg border border-border/50 bg-secondary/10">
-          {project.image ? (
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full aspect-video object-cover transition-transform duration-700 hover:scale-[1.03]"
-            />
-          ) : (
-            <div className="w-full aspect-video flex flex-col items-center justify-center gap-4 p-10">
-              <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <project.icon className="w-7 h-7 text-primary" />
-              </div>
-              <p className="text-sm text-foreground/70 text-center max-w-xs">
-                AI/ML project preview
-              </p>
-              <div className="flex flex-wrap justify-center gap-2">
-                {project.tech.slice(0, 3).map((t) => (
-                  <span
-                    key={t}
-                    className="text-xs px-3 py-1 bg-secondary/70 border border-border rounded-full text-muted-foreground"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+          <div className="w-full aspect-video flex flex-col items-center justify-center gap-4 p-10">
+            <div className="w-16 h-16 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+              <project.icon className="w-7 h-7 text-primary" />
             </div>
-          )}
+            <p className="text-sm text-foreground/70 text-center max-w-xs">
+              AI/ML concept preview
+            </p>
+            <div className="flex flex-wrap justify-center gap-2">
+              {project.tech.slice(0, 3).map((t) => (
+                <span
+                  key={t}
+                  className="text-xs px-3 py-1 bg-secondary/70 border border-border rounded-full text-muted-foreground"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
 
           {/* Sheen */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-70" />
