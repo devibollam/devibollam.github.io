@@ -49,21 +49,39 @@ const ExperienceSection = () => {
               <h2 className="font-heading text-3xl md:text-4xl font-bold">Work Experience</h2>
             </motion.div>
 
-            {experiences.map((exp, i) => (
+            <div className="relative">
+              {/* timeline rail */}
+              <div className="absolute left-1 top-0 bottom-0 w-px bg-border/60" />
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.15 }}
-                className="relative pl-8 border-l border-border pb-8 last:pb-0"
-              >
-                <div className="absolute left-0 top-1 w-2 h-2 -translate-x-[5px] bg-primary rounded-full" />
-                <p className="text-xs text-muted-foreground tracking-wider uppercase mb-1">{exp.period}</p>
-                <h3 className="font-heading text-lg font-semibold">{exp.role}</h3>
-                <p className="text-primary text-sm mb-3">{exp.company}</p>
-                <p className="text-foreground/70 text-sm leading-relaxed">{exp.description}</p>
-              </motion.div>
-            ))}
+                aria-hidden="true"
+                initial={{ scaleY: 0 }}
+                animate={isInView ? { scaleY: 1 } : {}}
+                transition={{ duration: 0.9, delay: 0.25 }}
+                className="absolute left-1 top-0 bottom-0 w-px bg-gradient-to-b from-primary via-primary/40 to-transparent origin-top"
+              />
+
+              {experiences.map((exp, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.55, delay: 0.2 + i * 0.12 }}
+                  className="relative pl-10 pb-10 last:pb-0"
+                >
+                  <div className="absolute left-1 top-1 -translate-x-1/2">
+                    <span className="block h-2.5 w-2.5 rounded-full bg-primary shadow-[0_0_0_6px_rgba(59,130,246,0.12)]" />
+                  </div>
+                  <p className="text-xs text-muted-foreground tracking-wider uppercase mb-1">
+                    {exp.period}
+                  </p>
+                  <h3 className="font-heading text-lg font-semibold">{exp.role}</h3>
+                  <p className="text-primary text-sm mb-3">{exp.company}</p>
+                  <p className="text-foreground/70 text-sm leading-relaxed">
+                    {exp.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
           </div>
 
           {/* Education */}

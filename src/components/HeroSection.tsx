@@ -1,10 +1,36 @@
 import { motion } from "framer-motion";
 import profileImg from "@/assets/profile.jpg";
 import { ArrowDown, Github, Linkedin, Star } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
 
+function useTypewriter(text: string, speedMs = 24) {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    setIdx(0);
+    const id = window.setInterval(() => {
+      setIdx((v) => (v >= text.length ? v : v + 1));
+    }, speedMs);
+    return () => window.clearInterval(id);
+  }, [text, speedMs]);
+
+  return text.slice(0, idx);
+}
+
 const HeroSection = () => {
+  const terminalLines = useMemo(
+    () => [
+      ">>> devibollam.profile()",
+      "Role: Senior AI/ML Engineer",
+      "Focus: Computer Vision • GenAI • RAG",
+      "Status: shipping production-grade ML systems",
+    ],
+    [],
+  );
+  const typed = useTypewriter(terminalLines.join("\n"), 14);
+
   return (
     <section className="relative min-h-screen flex flex-col justify-between px-6 md:px-16 lg:px-24 py-8">
       {/* Nav */}
@@ -61,6 +87,29 @@ const HeroSection = () => {
               Building intelligent, data-driven solutions with machine learning,
               deep learning, and large language models.
             </motion.p>
+
+            {/* Terminal intro */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.85 }}
+              className="max-w-md rounded-xl border border-border/60 bg-secondary/40 backdrop-blur px-5 py-4"
+            >
+              <div className="flex items-center gap-2 pb-3">
+                <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-yellow-400/80" />
+                <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
+                <span className="ml-2 text-xs text-muted-foreground font-heading tracking-wider">
+                  agent_console.py
+                </span>
+              </div>
+              <pre className="text-xs md:text-sm leading-relaxed text-foreground/80 font-mono whitespace-pre-wrap">
+                {typed}
+                <span className="inline-block w-[8px] translate-y-[1px] animate-pulse">
+                  ▋
+                </span>
+              </pre>
+            </motion.div>
 
             {/* Microsoft Badge inline */}
             <motion.div

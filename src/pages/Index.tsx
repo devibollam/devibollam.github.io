@@ -10,7 +10,7 @@ import BackToTop from "@/components/BackToTop";
 
 const Index = () => {
   return (
-    <main className="bg-background text-foreground overflow-x-hidden scroll-smooth">
+    <main className="relative z-10 bg-background/70 text-foreground overflow-x-hidden scroll-smooth">
       <HeroSection />
       <AboutSection />
       <StatsSection />
