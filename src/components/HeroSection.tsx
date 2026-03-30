@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-const profileImg = "/devibollam.github.io/profile.jpg";
+import profileImg from "../assets/profile.jpg";
+import microsoftBadge from "../assets/microsoft-azure-ai-900.png";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
@@ -162,7 +163,7 @@ const HeroSection = () => {
                 className="flex items-center gap-2 px-3 py-2 bg-card/80 border border-border/50 rounded-lg hover:border-primary/30 hover:bg-primary/5 transition-colors"
               >
                 <img
-                  src="/devibollam.github.io/microsoft-azure-ai-900.png"
+                  src={microsoftBadge}
                   alt="Microsoft Azure AI Fundamentals"
                   className="w-6 h-6"
                 />
