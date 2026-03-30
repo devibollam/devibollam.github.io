@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import profileImg from "../assets/profile.jpg";
-import microsoftBadge from "../assets/microsoft-azure-ai-900.png";
+const profileImg = "/devibollam.github.io/profile.jpg";
+const microsoftBadge = "/devibollam.github.io/microsoft-azure-ai-900.png";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 
