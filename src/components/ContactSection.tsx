@@ -197,14 +197,14 @@ const ContactSection = () => {
               </div>
               <div className="text-sm font-heading text-muted-foreground">
                 <span className="text-teal-400">{"<"}</span>
-                <span className="text-foreground">devibollam</span>
+                <span className="text-foreground">developer</span>
                 <span className="text-teal-400">{"/>"}</span>
               </div>
             </div>
           </motion.div>
           
           <p className="text-xs text-muted-foreground text-center">
-            © {new Date().getFullYear()} Lakshmidevi Bollam. Built with conviction.
+            © {new Date().getFullYear()}. Built with conviction.
           </p>
           
           {/* Creative Tagline */}

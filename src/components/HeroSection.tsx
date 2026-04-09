@@ -1,8 +1,7 @@
 import { motion } from "framer-motion";
-const profileImg = "profile.jpg";
-const microsoftBadge = "microsoft-azure-ai-900.png";
+import { useState, useEffect, useMemo } from "react";
+import microsoftBadge from "../assets/microsoft-azure-ai-900.png";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
 
@@ -14,7 +13,7 @@ const HeroSection = () => {
 
   const terminalLines = useMemo(
     () => [
-      { type: 'command', text: ">>> devibollam.profile()" },
+      { type: 'command', text: ">>> profile()" },
       { type: 'output', text: "Loading AI/ML Engineer profile..." },
       { type: 'output', text: "Initializing ML models and architectures..." },
       { type: 'output', text: "Configuring GenAI and agent systems..." },
@@ -90,20 +89,20 @@ const HeroSection = () => {
 
       {/* Main hero content */}
       <div className="flex-1 flex items-center">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center w-full max-w-6xl mx-auto">
-          {/* Text */}
+        <div className="grid grid-cols-1 gap-12 lg:gap-16 items-center w-full max-w-4xl mx-auto">
+          {/* Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-7 space-y-6"
+            className="space-y-6 text-center lg:text-left"
           >
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="text-foreground">Building Intelligent</span>
               <br />
               <span className="text-primary">AI Solutions</span>
             </h1>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0">
               AI/ML Engineer specializing in machine learning, deep learning, and large language models.
               Passionate about creating intelligent systems that solve real-world problems.
             </p>
@@ -113,7 +112,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="max-w-lg rounded-xl border border-border/30 bg-card/60 backdrop-blur-sm px-5 py-4 shadow-lg"
+              className="max-w-lg rounded-xl border border-border/30 bg-card/60 backdrop-blur-sm px-5 py-4 shadow-lg mx-auto lg:mx-0"
             >
               <div className="font-mono text-xs space-y-2">
                 {terminalLines.map((line, index) => (
@@ -154,7 +153,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 justify-center lg:justify-start"
             >
               <a
                 href="https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/"
@@ -176,7 +175,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0 }}
-              className="flex gap-4"
+              className="flex gap-4 justify-center lg:justify-start"
             >
               {socialLinks.map(({ icon: Icon, href }) => (
                 <a
@@ -192,40 +191,7 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Profile image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="lg:col-span-5 flex justify-center lg:justify-end"
-          >
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-2 border-border glow-accent bg-gradient-to-br from-primary/10 to-secondary/20 flex items-center justify-center">
-                <img
-                  src={profileImg}
-                  alt="Lakshmidevi Bollam"
-                  className="w-full h-full object-cover rounded-full"
-                  onError={(e) => {
-                    console.error('Image failed to load:', profileImg);
-                    e.currentTarget.style.display = 'none';
-                  }}
-                  onLoad={(e) => {
-                    console.log('Image loaded successfully:', profileImg);
-                    const target = e.currentTarget;
-                    console.log('Image dimensions:', target.naturalWidth, 'x', target.naturalHeight);
-                  }}
-                  style={{
-                    display: 'block',
-                    minWidth: '100%',
-                    minHeight: '100%'
-                  }}
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 border border-primary/20 rounded-full" />
-              <div className="absolute -top-4 -left-4 w-16 h-16 border border-primary/10 rounded-full" />
-            </div>
-          </motion.div>
-        </div>
+                  </div>
       </div>
 
       {/* Scroll indicator */}
