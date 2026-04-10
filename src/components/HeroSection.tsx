@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect, useMemo } from "react";
 import microsoftBadge from "../assets/microsoft-azure-ai-900.png";
+import profileImage from "../assets/profile.jpg";
 import { ArrowDown, Github, Linkedin } from "lucide-react";
 
 const navItems = ["About", "Experience", "Projects", "Contact"];
@@ -201,7 +202,7 @@ const HeroSection = () => {
             <div className="relative">
               <div className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
-                  src="/profile.jpg"
+                  src={profileImage}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
