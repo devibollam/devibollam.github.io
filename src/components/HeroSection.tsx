@@ -89,7 +89,7 @@ const HeroSection = () => {
 
       {/* Main hero content */}
       <div className="flex-1 flex items-center">
-        <div className="grid grid-cols-1 gap-12 lg:gap-16 items-center w-full max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full max-w-6xl mx-auto">
           {/* Text content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -191,7 +191,26 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-                  </div>
+          {/* Profile Image */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex justify-center lg:justify-end"
+          >
+            <div className="relative">
+              <div className="w-64 h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                <img
+                  src="/profile.jpg"
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Animated ring effect */}
+              <div className="absolute inset-0 rounded-full border-2 border-primary/30 animate-pulse" />
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator */}
